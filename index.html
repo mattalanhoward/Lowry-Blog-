@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="headergap"></div>
+    <div class="blog-header cntrflex" style="background:url(/images/blog-banner.png);background-size:cover;background-position:center;">
+        <div class="blog-header-inner">
+            <h1 class="white cntrflex">Lowry Insurance Blog</h1>
+            <p class="white cntrflex w650">Lowry Insurance was established on a foundation of integrity and trust. At Lowry Insurance, a reliable insurance product backs every tailored policy we produce.</p>
+        </div>
+    </div>
+    <div class="cntr pt100">
+       <h2><em>Blog Directory</em></h2>
+       <br>
+       <input type="text" id="blog-filter-input" onkeyup="blogFilter()" placeholder="Filter Blogs..." title="Type in a name">
+    </div>
+    <div>
+        <h3>Categories</h3> 
+        <div onclick="filterCategory(`life`)">Life</div> 
+        <div onclick="filterCategory(`health`)">Health</div>
+        <div onclick="filterCategory(`auto`)">Auto</div>
+        <div onclick="filterCategory(`business`)">Business</div>
+    </div>
+    <div id="blog-card-container">
+        
+
+
+        
+    </div>
+    <div>
+        <h3>Pages <span onclick="pagination(0, 5)">1</span> <span onclick="pagination(5, 10)">2</span> <span onclick="pagination(10, 15)">3</span></h3>
+    </div>
+
+</body>
+<script type="text/javascript">
+    let blogs = [{
+        blogNum: 1,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "life"
+    },
+    {
+        blogNum: 2,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category:"life"
+    },
+    {
+        blogNum: 3,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "health"
+    },
+    {
+        blogNum: 4,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "auto"
+    },
+    {
+        blogNum: 5,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 6,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 7,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 8,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 9,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 10,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 11,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 12,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 13,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 14,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+    {
+        blogNum: 15,
+        blogLink:"/blog/blog-hurricane.aspx",
+        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        category: "business"
+    },
+
+]
+
+//Filter by Category
+const filterCategory = (category) => {
+    let updatedList = blogs.filter((blog) =>{
+        return blog.category === category
+    });
+    displayBlogs(updatedList);
+    console.log(`Updated Category`, updatedList, category)
+}
+
+
+//Pagination
+const pagination = (start,end) => {
+    let updatedList = blogs.slice(start,end)
+    console.log(`updatedList`, updatedList)
+    displayBlogs(updatedList);
+}
+
+
+//Loop over blogs array to display all blogs
+    const displayBlogs = (updatedList) => {
+    let cardContainer = document.getElementById("blog-card-container")
+    let blogList = ''
+
+
+    for(i=0;i<updatedList.length; i++){
+
+        blogList += 
+        `
+            <div class="blog-card blog-filter">
+            <h3 class="blog-title"><b>${updatedList[i].blogNum}</b><span>${updatedList[i].category}</span></h3>
+           <a href="${updatedList[i].blogLink}"><img src="${updatedList[i].imgUrl}" alt="Hurricane Preparedness" style="width:100%"></a>
+            <div class="blog-card-content plr20">
+                <h3 class="blog-title"><b>${updatedList[i].title}</b></h3>
+                <p>${updatedList[i].description}</p>
+            </div>
+            <a href="${updatedList[i].blogLink}"><button class="btn-blue">Read More</button></a>     
+        </div>`
+    
+    }
+    cardContainer.innerHTML = blogList
+    }
+
+
+    //On page load display first 5 blogs.
+    pagination(0,5);
+
+
+    const blogFilter = () => {      
+        let cards = document.getElementsByClassName("blog-filter");
+        let input = document.getElementById("blog-filter-input").value.toLowerCase().split(" ");
+      
+        for (let i=0; i < cards.length; i++) {
+            let blogTitle = cards[i].getElementsByClassName("blog-title");            
+            for (let j = 0; j < input.length; j++) {
+                for (k = 0; k < blogTitle.length; k++) {
+                    if ((blogTitle[k].innerText).toLowerCase().includes(input[j])) { 
+                        blogTitle[k].parentNode.parentNode.style.display = ""
+                        
+                    } else {                    
+                        blogTitle[k].parentNode.parentNode.style.display = "none"
+                    }
+                } 
+            }
+        }
+     };
+     
+     const shortDescription = () => {
+         let intro = document.getElementsByClassName
+     }
+
+
+
+ </script>
+
+
+
+<script>
+
+
+</script>
+</html>
