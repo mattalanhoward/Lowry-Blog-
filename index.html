@@ -20,147 +20,272 @@
        <br>
        <input type="text" id="blog-filter-input" onkeyup="blogFilter()" placeholder="Filter Blogs..." title="Type in a name">
     </div>
-    <div>
-        <h3>Categories</h3> 
+    <div class="side-bar">
+        <h3 class="mtb20">Categories</h3>
+        <div onclick="pagination(0,9);">All</div> 
         <div onclick="filterCategory(`life`)">Life</div> 
         <div onclick="filterCategory(`health`)">Health</div>
         <div onclick="filterCategory(`auto`)">Auto</div>
         <div onclick="filterCategory(`business`)">Business</div>
+        <div onclick="filterCategory(`personal`)">Personal</div>
+        <div onclick="filterCategory(`home`)">Home</div>
     </div>
     <div id="blog-card-container">
-        
-
-
-        
+         
     </div>
-    <div>
-        <h3>Pages <span onclick="pagination(0, 5)">1</span> <span onclick="pagination(5, 10)">2</span> <span onclick="pagination(10, 15)">3</span></h3>
+    <div class="cntr ptb40 ">
+        <p class="pagination">Pages <span onclick="pagination(0, 9)"><a href="#top-of-page">1</a></span> <span onclick="pagination(9, 18)"><a href="#top-of-page">2</a></span> <span onclick="pagination(18, 27)"><a href="#top-of-page">3</a></span></p>
     </div>
-
-</body>
-<script type="text/javascript">
+    
+    <script type="text/javascript">
     let blogs = [{
         blogNum: 1,
         blogLink:"/blog/blog-hurricane.aspx",
         imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
+        imgAlt: "Hurricane Preparedness",
+        title: "Hurricane Preparedness Checklist",
         description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
         category: "life"
     },
     {
         blogNum: 2,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
+        blogLink:"/blog/blog-epli.aspx",
+        imgUrl: "/images/blog/blog-epli-thumb.jpg",
+        imgAlt:"Employment Practices Liability Insurance",
         title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category:"life"
+        description: "In a perfect world, the relationship between an employer and employee is always a positive one - unfortunately, that's not always the case. Employee rights in the workplace are an important benefit of modern businesses, but it's important for businesses to also be able to defend themselves against claims of rights violations by a disgruntled or dissatisfied employee.",
+        category:"business"
     },
     {
         blogNum: 3,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category: "health"
+        blogLink:"/blog/blog-umbrella.aspx",
+        imgUrl: "/images/blog/umbrella-min.png",
+        imgAlt:"Umbrella Insurance",
+        title: "What is Personal Umbrella Insurance?",
+        description: "In the world of insurance, there are plenty of policies that cover just about anything. However, it's possible that policyholders may find themselves stuck paying out of pocket for an incident that may not be completely covered if they're liable for a claim that exceeds the amount covered under their policy - that's where an umbrella insurance policy comes in.",
+        category: "personal"
     },
     {
         blogNum: 4,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category: "auto"
-    },
-    {
-        blogNum: 5,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        blogLink:"/blog/blog-directors-officers.aspx",
+        imgUrl: "/images/blog/blog-directors-and-officers-thumb.jpg",
+        imgAlt:"Directors and Officers",
+        title: "What is Directors and Officers Liability Insurance?",
+        description: "In the corporate world, there is a plethora of policy combinations, each providing coverage for nearly anything that may take place in the workplace. In the case of Directors and Officers Liability Insurance, coverage protects directors and officers in the case of a personal lawsuit from an employee, vendor, competitor, investor, customer, or other party for actual or alleged wrongful acts in managing a company.",
         category: "business"
     },
     {
+        blogNum: 5,
+        blogLink:"/blog/blog-christmas-decorating.aspx",
+        imgUrl: "/images/blog/blog-christmas-decorating-thumb.jpg",
+        imgAlt:"Christmas decorating safety",
+        title: "Christmas Decorating Safety Tips",
+        description: "It may be difficult believe, but the holidays are here! For families around the world, breaking out the mistletoe and holly is a time-honored tradition that defines the season and creates memories that last for decades to come. However, taking a few precautions can ensure that your holiday decor is secure for the entire season.",
+        category: "personal"
+    },
+    {
         blogNum: 6,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        blogLink:"/blog/blog-business-insurance.aspx",
+        imgUrl: "/images/blog/blog-business-insurance-thumb.jpg",
+        imgAlt: "Business Insurance",
+        title: "What is Business Insurance?",
+        description: `At first glance, "business insurance" seems like a broad term that can leave a potential policyholder with a lot of questions. However, business insurance is an overarching category covering plenty of insurance types that many businesses around the world rely on depending on their own unique business model, industry, and need. Industry-specific needs and risks make it impossible for insurance companies to create one plan that fits every business. At Lowry, we also understand that each business is unique. That's why we provide industry-specific insurance options to fit businesses of every type.`,
         category: "business"
     },
     {
         blogNum: 7,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        blogLink:"/blog/blog-winter-season.aspx",
+        imgUrl: "/images/blog/Blog-winter-car-thumb.jpg",
+        imgAlt: "Winter car season prep",
+        title: "Preparing Your Car for the Winter Season",
+        description: "While having proper car insurance helps keep you covered when disaster strikes, there is still the matter of ensuring that your ride is ready for what Mother Nature has in store during the winter months. Without the proper preventative measures, dropping temperatures and winter weather can wreak havoc on your vehicle and leave you with thousands in repair or replacement costs if the proper steps aren't taken. While there is no way to completely prepare for what the future and nature have in store, there are plenty of ways to prepare your car, truck, or SUV as the winter months approach to make sure that you're ready to go each day.",
         category: "business"
     },
     {
         blogNum: 8,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category: "business"
+        blogLink:"/blog/blog-flood-insurance.aspx",
+        imgUrl: "/images/blog/blog-flood-insurance-thumb.jpg",
+        imgAlt: "Flood Insurance",
+        title: "Do You Really Need Flood Insurance?",
+        description: "For homeowners, having the right combination of insurance coverage is the difference between a minor inconvenience and a massive financial burden when disaster strikes. From fires and floods to accidents and natural disasters, insurance coverage provides peace of mind that the investment you've made in your home is completely secured in any situation. While homeowners insurance provides a solid foundation of protection, many fail to realize that they are likely not completely covered in the case of a flood.",
+        category: "personal"
     },
     {
         blogNum: 9,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category: "business"
+        blogLink:"/blog/blog-winter-storm.aspx",
+        imgUrl: "/images/blog/Blog-winter-storm-thumb.jpg",
+        imgAlt: "Winter Storm",
+        title: "How to Prepare for a Winter Storm",
+        description: "With dropping temperatures and seasonal changes, it's natural that winter storms are on their way. Depending on what region of the country you may live in, the likelihood or a snow storm may be slim. However, for areas that are prone to heavy winter weather, being prepared before the season begins and having a plan in place can help ensure that you're ready for whatever Old Man Winter has in store. Once the threat of winter precipitation is real, here are some simple steps that you can take to make sure that you're as prepared as possible.",
+        category: "personal"
     },
     {
         blogNum: 10,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category: "business"
+        blogLink:"/blog/blog-commercial-policy.aspx",
+        imgUrl: "/images/blog/Blog-commercial-policy-thumb.jpg",
+        imgAlt: "Commerical policy",
+        title: "Keeping Your Commercial Policy in Check",
+        description: "Commercial insurance policies vary from business to business, changing based on the size of the company, the number of its locations, the coverage preferences of the policyholders, and so much more. With so many changes hitting the business landscape on a daily, weekly, and monthly basis, it's easy for business owners to lose sight of their policy and fall out of touch with the coverage that provides peace of mind. As a new year gets underway, there has never been a better time to review your commercial insurance policy and make sure that you're completely covered for what lies ahead.",
+        category: "commercial"
     },
     {
         blogNum: 11,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category: "business"
+        blogLink:"/blog/blog-what-is-life.aspx",
+        imgUrl: "/images/blog/Blog-what-is-life-thumb.jpg",
+        imgAlt: "What is life insurance?",
+        title: "What is Life Insurance?",
+        description: `Life insurance can be a very intimidating concept that sets minds racing. "Do I really need life insurance?" is one of the most common questions, but one that is top of mind for many is much simpler to answer: "What is life insurance?" While there are limitless coverage options that help our team at Lowry tailor a policy to fit your needs, there are some foundational common factors that tie all life insurance together.`,
+        category: "personal"
     },
     {
         blogNum: 12,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        blogLink:"/blog/blog-builders-mutual.aspx",
+        imgUrl: "/images/blog/Blog-builders-mutual-thumb.jpg",
+        imgAlt: "Builders Mutual award",
+        title: "Builders Mutual Names Lowry Insurance to the Status of Champions Club",
+        description: "Raleigh, N.C. - Builders Mutual Insurance Company is pleased to announce that out of more than 750 agencies, Lowry Insurance qualified to join our 2021 Champions Club, the select group representing our profitable partner agencies.",
         category: "business"
     },
     {
         blogNum: 13,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category: "business"
+        blogLink:"/blog/blog-understanding-insurance.aspx",
+        imgUrl: "/images/blog/Blog-understanding-insurance-thumb.jpg",
+        imgAlt: "Understanding your insurance policy",
+        title: "Understanding Your Insurance Policy",
+        description: "In the world of insurance, there are a lot of moving parts that all come together to make up your personal policy. Our goal at Lowry Insurance is always to share information and help not only our clients, but everyone learn the details and gain a deeper understanding of their policies and the coverage that they provide - that all starts with the basics!",
+        category: "personal"
     },
     {
         blogNum: 14,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
-        category: "business"
+        blogLink:"/blog/blog-freezing-pipes.aspx",
+        imgUrl: "/images/blog/Blog-freezing-pipes-thumb.jpg",
+        imgAlt: "Prevent freezing pipes",
+        title: "How to Prevent Pipes from Freezing",
+        description: "When winter weather is on the way, it's important to ensure that you're fully prepared for what's in store. Taking care of your friends and family when temperatures drop and precipitation kicks off comes first and foremost, but once those are handled it's time to turn your attention to your home. Temperatures at or below freezing begin turning water to ice, expanding and causing pipes to rupture and burst. From repairs to your system to unexpected home renovations after damages, a burst pipe can end up costing thousands of dollars to completely repair.",
+        category: "home"
     },
     {
         blogNum: 15,
-        blogLink:"/blog/blog-hurricane.aspx",
-        imgUrl: "/images/blog/blog-hurricane-preparedness-checklist-thumb.jpg",
-        title: "What is Employment Practices Liability Insurance (EPLI)?",
-        description: "When Hurricane Season comes around, it's important to ensure that you keep yourself, your family, and your property prepared for what Mother Nature may bring. When you're preparing your hurricane safety plan, here are a few important steps to take that could go a long way in helping keep you protected this hurricane season.",
+        blogLink:"/blog/blog-3-things-to-know.aspx",
+        imgUrl: "/images/blog/Blog-3-things-health-insurance-Thumb.jpg",
+        imgAlt: "3 Things to know about health insurance",
+        title: "3 Things to Know About Health Insurance",
+        description: "Whether you're a shopping for your first health insurance policy or simple learning more about the industry, understanding the logistics of health insurance is an important first step in understanding your coverage and ensuring that you're prepared when the time comes to use it",
+        category: "health"
+    },
+    {
+        blogNum: 16,
+        blogLink:"/blog/blog-window-safety.aspx",
+        imgUrl: "/images/blog/Blog-window-safety-thumb.jpg",
+        imgAlt: "Window Safety",
+        title: "Window Safety Tips for Kids",
+        description: "Windows can be one of your home's most beautiful assets, bringing in natural light and brightening up your home in a variety of ways. However, if the proper precautions aren't taken, there are also specific risks that can put your family - especially younger children - in danger.",
+        category: "home"
+    },
+    {
+        blogNum: 17,
+        blogLink:"/blog/blog-reduce-distractions.aspx",
+        imgUrl: "/images/blog/Blog-distractions-while-driving-thumb.jpg",
+        imgAlt: "Distractions While Driving",
+        title: "5 Ways to Reduce Distractions While Driving",
+        description: "Technology may be a major part of our everyday lives, but it shouldn't be a major part of your daily commute. The CDC and National Highway Traffic Safety Administration reported that distracted driving caused 400,000 injuries in 2018 and claimed 3,142 lives in 2019 across the United States.",
+        category: "auto"
+    },
+    {
+        blogNum: 18,
+        blogLink:"/blog/blog-summer-safety.aspx",
+        imgUrl: "/images/blog/Blog-5-summer-safety-tips-thumb.jpg",
+        imgAlt: "Palm Tree",
+        title: "5 Summer Safety Tips",
+        description: "Summer officially kicks off on June 20, bringing an entire season of exciting outdoor adventures, camping trips, and quality time with friends and family. While the warmer temperatures and extra daylight are hallmarks of the season, it's important to keep several safety steps in mind during the summer months. From poolside days to backyard barbeques, here are the top tips that you should know.",
+        category: "personal"
+    },
+    {
+        blogNum: 19,
+        blogLink:"/blog/blog-fire-pit-safety.aspx",
+        imgUrl: "/images/blog/Blog-Fire-Pit-Safety-thumb.jpg",
+        imgAlt: "Fire Pit in the woods",
+        title: "Fire Pit Safety",
+        description: "Fire pits are a long-time favorite or those that are looking for a way to spend more time outside with family and friends! From summer marshmallow roasts to cool winter evenings, fire pits are the perfect addition to your backyard living experience that you can enjoy all year long. However, it's important to also take proper safety precautions to keep the fun times going for years to come.",
+        category: "personal"
+    },
+    {
+        blogNum: 20,
+        blogLink:"/blog/blog-employee-benefits.aspx",
+        imgUrl: "/images/blog/Blog-Benefits-min.jpeg",
+        imgAlt: "Employees Around a Desk",
+        title: "Employee Benefit Programs",
+        description: "As an employer, having competitive benefits packages for existing and potential employees is one of your most important tools to attract and retain dedicated employees and build a strong, reliable team. When someone is planning the next steps in their career, strong benefits are likely to be at the top of their list of priorities when the time comes to choose a company to call home. While offering employee benefits is often one of the largest expenses for business owners, those offerings are often considered a direct reflection of your company and have a strong impact on your reputation.",
         category: "business"
     },
+    {
+        blogNum: 21,
+        blogLink:"/blog/blog-return-home-hurricane.aspx",
+        imgUrl: "/images/blog/Blog-Return-Home-Hurricane-thumb.jpg",
+        imgAlt: "Truck Driving Through Flood",
+        title: "How to Return Home After a Hurricane",
+        description: "Natural disasters like hurricanes leave lasting damage on millions of homes and businesses each year - not to mention the lasting impact on the people who call these places homes. When the storms have settled and you're ready to return to your home after a hurricane evacuation, there are several important factors to keep in mind to ensure that you're safe and prepared throughout the process.",
+        category: "home"
+    },
+    {
+        blogNum: 22,
+        blogLink:"/blog/blog-help-outdoor-workers-stay-cool.aspx",
+        imgUrl: "/images/blog/Blog-Help-Workers-Stay-Cool-thumb.jpg",
+        imgAlt: "Ibeam Frame of Large Building with Sun in the Background",
+        title: "4 Tips to Help Outdoor <br> Workers Stay Cool",
+        description: "The summer months can be one of the most beautiful times of the year and one of the most dangerous. Hot summer temperatures, often combined with underlying conditions, have been shown to cause a devastating impact on the population. While some stay inside to beat the heat, those with outdoor careers should practice common summer safety tips to stay healthy all season long. So, what are some of the top safety tips for workers during the summer?",
+        category: "business"
+    },
+    {
+        blogNum: 23,
+        blogLink:"/blog/blog-back-to-school-insurance-tips.aspx",
+        imgUrl: "/images/blog/Blog-back-to-school-insurance-tips-thumb.jpeg",
+        imgAlt: "Rear of 3 yellow buses lined up in a parking lot",
+        title: "Back-to-School Insurance Tips",
+        description: "As the school year kicks off, a change of routine is on the way for millions of families. Whether you've got a younger child entering daycare or a student heading off to college in the fall, there are a few considerations that policyholders should consider to ensure that everyone on your policy is prepared for the year ahead.",
+        category: "personal"
+    },
+    {
+        blogNum: 24,
+        blogLink:"/blog/blog-commercial-car-insurance-vs-hired.aspx",
+        imgUrl: "/images/blog/Blog-commercial-car-insurance-vs-hired-thumb.jpg",
+        imgAlt: "Cars in a parking lot",
+        title: "What's the Difference Between Commercial Car Insurance and Hired & Non-Owned Insurance?",
+        description: "Remote work may have become the new norm for millions of Americans, but there will always be a need for employees to travel for work.",
+        category: "auto"
+    },
+    {
+        blogNum: 25,
+        blogLink:"/blog/blog-small-business-week.aspx",
+        imgUrl: "/images/blog/Blog-Small-Business-Week-thumb.jpg",
+        imgAlt: "Woman standing behind a point of sale system at a small business",
+        title: "Lowry Celebrates National Small Business Week",
+        description: "Small businesses continue to make up the backbone of the United States, making up 99.9% of all businesses in the country. As a family-owned and operated insurance firm, Lowry Insurance is proud to not only be one of America's small businesses, but also to support the small businesses that call our community.",
+        category: "business"
+    },
+    {
+        blogNum: 26,
+        blogLink:"/blog/blog-fire-safety-tips-for-homeowners.aspx",
+        imgUrl: "/images/blog/Blog-Fire-Safety-Tips-For-Homeowners-thumb.jpg",
+        imgAlt: "Close up of a fire extinguisher on a light green wall",
+        title: "Fire Safety Tips for Homeowners",
+        description: "Fire Prevention Week is officially here, which means it's the perfect time to ensure that you're taking the proper precautions to keep your home and your family safe. According to FEMA, fire-related damage caused $14.8 billion in 2019, a 74.5 percent increase as compared to 2010. While accidental fires will always happen, taking time to understand common fire prevention methods can go a long way in minimizing risk.",
+        category: "home"
+    },
+    {
+        blogNum: 27,
+        blogLink:"/blog/blog-cyber-liability-insurance.aspx",
+        imgUrl: "/images/blog/Blog-Cyber-Liability-Insurance-thumb.jpg",
+        imgAlt: "Dark image of laptop keyword with illuminated keys.",
+        title: "What is Cyber Liability Insurance?",
+        description: "One in five businesses fall victim to a cyberattack, but those numbers are already on the rise. Cybersecurity incidents rose 600 percent during the COVID-19 pandemic, putting the importance of complete cybersecurity protection in the spotlight.",
+        category: "business"
+    },
+    
 
 ]
+
+blogs.reverse();
 
 //Filter by Category
 const filterCategory = (category) => {
@@ -184,15 +309,15 @@ const pagination = (start,end) => {
     const displayBlogs = (updatedList) => {
     let cardContainer = document.getElementById("blog-card-container")
     let blogList = ''
-
+    
 
     for(i=0;i<updatedList.length; i++){
 
         blogList += 
         `
             <div class="blog-card blog-filter">
-            <h3 class="blog-title"><b>${updatedList[i].blogNum}</b><span>${updatedList[i].category}</span></h3>
-           <a href="${updatedList[i].blogLink}"><img src="${updatedList[i].imgUrl}" alt="Hurricane Preparedness" style="width:100%"></a>
+            <!--<h3 class="blog-title"><b>${updatedList[i].blogNum}</b><span>${updatedList[i].category}</span></h3>-->
+           <a href="${updatedList[i].blogLink}"><img src="${updatedList[i].imgUrl}" alt="${updatedList[i].imgAlt}" style="width:100%"></a>
             <div class="blog-card-content plr20">
                 <h3 class="blog-title"><b>${updatedList[i].title}</b></h3>
                 <p>${updatedList[i].description}</p>
@@ -204,9 +329,16 @@ const pagination = (start,end) => {
     cardContainer.innerHTML = blogList
     }
 
+//Filter by input
+const filterInput = (input) => {
+ 
 
-    //On page load display first 5 blogs.
-    pagination(0,5);
+    displayBlogs(updatedList);
+    console.log(`Updated list by filter`, updatedList, input)
+}
+
+//On page load display first 9 blogs.
+pagination(0,9);
 
 
     const blogFilter = () => {      
@@ -214,7 +346,8 @@ const pagination = (start,end) => {
         let input = document.getElementById("blog-filter-input").value.toLowerCase().split(" ");
       
         for (let i=0; i < cards.length; i++) {
-            let blogTitle = cards[i].getElementsByClassName("blog-title");            
+            let blogTitle = cards[i].getElementsByClassName("blog-title"); 
+            console.log(blogTitle)           
             for (let j = 0; j < input.length; j++) {
                 for (k = 0; k < blogTitle.length; k++) {
                     if ((blogTitle[k].innerText).toLowerCase().includes(input[j])) { 
@@ -237,9 +370,4 @@ const pagination = (start,end) => {
  </script>
 
 
-
-<script>
-
-
-</script>
 </html>
